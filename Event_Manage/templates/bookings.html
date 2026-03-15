@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Bookings</h2>
+
+<table class="table">
+
+<tr>
+<th>Event</th>
+<th>Date</th>
+<th>Location</th>
+</tr>
+
+{% for b in bookings %}
+
+<tr>
+<td>{{b.name}}</td>
+<td>{{b.date}}</td>
+<td>{{b.location}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
