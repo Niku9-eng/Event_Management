@@ -232,5 +232,5 @@ def book(event_id):
     return "Event booked successfully!"
 
 if __name__ == "__main__":
-    init_db()
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Render provides PORT
+    app.run(host="0.0.0.0", port=port)
