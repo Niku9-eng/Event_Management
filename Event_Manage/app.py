@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, redirect, session
 import sqlite3
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = "secret123"
+app.secret_key = os.getenv("SECRET_KEY", "dev-secret-key-change-in-production")
 
 
 def get_db():
@@ -233,4 +238,5 @@ def book(event_id):
 
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True)
+    debug_mode = os.getenv("FLASK_DEBUG", "False").lower() == "true"
+    app.run(debug=debug_mode)
